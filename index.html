@@ -7,36 +7,69 @@
 		
 		<script>
 			$(document).ready(function(){
-				var $satoshi = $('#satoshi');
-				var $btc = $('#btc');
-				var $doge = $('#doge');
+				var $b_satoshi = $('#b_satoshi');
+				var $b_btc = $('#b_btc');
+				var $b_doge = $('#b_doge');
 				
-				$('#convert').click(function(){
-					$doge.val(parseInt($btc.val() / ($satoshi.val() * 0.00000001)));
+				$('#buy').click(function(){
+					$b_doge.val(parseInt($b_btc.val() / ($b_satoshi.val() * 0.00000001)));
+				});
+				
+				var $s_satoshi = $('#s_satoshi');
+				var $s_btc = $('#s_btc');
+				var $s_doge = $('#s_doge');
+				
+				$('#sell').click(function(){
+					$s_btc.val($s_doge.val() * ($s_satoshi.val() * 0.00000001));
 				});
 			});
 		</script>
 	</head>
 
 	<body>
-		<table>
-			<tr>
-				<td>Satoshi</td>
-				<td><input type="text" id="satoshi" name="satoshi" /></td>
-			</tr>
+		<div>
+			<h2>Buy</h2>
+			<table>
+				<tr>
+					<td>Satoshi</td>
+					<td><input type="text" id="b_satoshi" /></td>
+				</tr>
+				
+				<tr>
+					<td>BTC</td>
+					<td><input type="text" id="b_btc" /></td>
+				</tr>
+				
+				<tr>
+					<td>DOGE</td>
+					<td><input type="text" id="b_doge" /></td>
+				</tr>			
+				
+			</table>
 			
-			<tr>
-				<td>BTC</td>
-				<td><input type="text" id="btc" name="btc" /></td>
-			</tr>
-			
-			<tr>
-				<td>DOGE</td>
-				<td><input type="text" id="doge" name="doge" /></td>
-			</tr>			
-			
-		</table>
+			<input type="button" id="buy" name="buy" value="Convert" />
+		</div>
 		
-		<input type="button" id="convert" name="convert" value="Convert" />
+		<div>
+			<h2>Sell</h2>
+			<table>
+				<tr>
+					<td>DOGE</td>
+					<td><input type="text" id="s_doge" /></td>
+				</tr>	
+				
+				<tr>
+					<td>Satoshi</td>
+					<td><input type="text" id="s_satoshi" /></td>
+				</tr>
+				
+				<tr>
+					<td>BTC</td>
+					<td><input type="text" id="s_btc" /></td>
+				</tr>
+			</table>
+			
+			<input type="button" id="sell" name="sell" value="Convert" />
+		</div>
 	</body>
 </html>
